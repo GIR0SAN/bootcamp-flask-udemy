@@ -23,3 +23,21 @@ table th, td{
  tr:hover{
     color: #fcd600e5;
 }
+.info{
+    background-color: rgb(107, 159, 255);
+    padding: 6px 8px;
+    margin-right: 8px;
+}
+.info:hover{
+    background-color: blanchedalmond;
+    color: black;
+}
+.buy{
+    background-color: rgb(55, 182, 55);
+    padding: 6px 8px;
+}
+.buy:hover{
+    background-color: rgb(35, 250, 35);
+    padding: 6px 8px;
+    color: #f5f5f5;
+}

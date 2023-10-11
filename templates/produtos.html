@@ -15,6 +15,8 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Cód Barra</th>
                 <th scope="col">Preço</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,11 @@
                 <td >{{item.nome}}</td>
                 <td >{{item.cod_barras}}</td>
                 <td >{{item.preço}}</td>
+                <td >{{item.descricao}}</td>
+                <td>
+                  <button class="info">Mais Informações</button>
+                  <button class="buy">Comprar</button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
