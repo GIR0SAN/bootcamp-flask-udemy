@@ -39,6 +39,15 @@
       </div>
     </div>
   </nav>
+<!-- O codigo abaixo é para mostrar mensagens de erro ao cadastrar o usuario. Está np html para poder ser usado em mais arquivos. É usado o flash para fazer esse alerta de erro.-->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
+
   <section>
     {% block conteudo %}
 
@@ -54,7 +63,7 @@
   }
   body{
     color: #f5f5f5;
-    
+    background-color: #222222;
   }
   section{
     height: 800px;

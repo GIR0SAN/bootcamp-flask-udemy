@@ -15,30 +15,34 @@
       <h1>
           Por favor crie a sua conta
       </h1>
-       <form method="post" class="form-register"  >
-          <div class="fields">
-              {{ form.usuario.label() }}
-              {{ form.usuario(class="form-control", placeholder="Informe o nome do usuário.")}}
-          </div>
+       <form method="POST" class="form-register"  >
+
+          {{ form.hidden_tag() }}
 
           <div class="fields">
-              {{ form.email.label()}}
-              {{ form.usuario(class="form-control", placeholder="Informe o email.")}}
-          </div>
+            {{ form.usuario.label() }}
+            {{ form.usuario(class="form-control", placeholder="Informe o nome do usuário.") }}
+        </div>
+        
+        <div class="fields">
+            {{ form.email.label() }}
+            {{ form.email(class="form-control", placeholder="Informe o email.") }} 
+        </div>
+        
+        <div class="fields">
+            {{ form.senha1.label() }}
+            {{ form.senha1(class="form-control", placeholder="Informe a senha") }} 
+        </div>
+        
+        <div class="fields">
+            {{ form.senha2.label() }}
+            {{ form.senha2(class="form-control", placeholder="Confirme a senha") }} 
+        </div>
+        <br>
 
-          <div class="fields">
-              {{ form.senha1.label()}}
-              {{ form.usuario(class="form-control", placeholder="Informe a senha")}}
+          <div class="btn-cadastrar">
+            {{ form.submit() }}
           </div>
-
-          <div class="fields">
-              {{ form.senha2.label()}}
-              {{ form.usuario(class="form-control", placeholder="Confirme a senha")}}
-          </div>
-
-          <button class="btn-cadastrar">
-            {{ form.submit()}}
-          </button>
       </form>
   </div>
 
