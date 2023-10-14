@@ -4,6 +4,7 @@ from mercado.models import Item, User
 from mercado.forms import CadastroForm
 from mercado import db
 
+
 @app.route('/')
 def page_home():
     return render_template("index.html")
@@ -27,6 +28,6 @@ def page_cadastro():
         return redirect(url_for('page_produtos'))
     if form.errors != {}:
         for err in form.errors.values():
-            flash(f"Erro ao cadastrar usuário {err}")
+            flash(f"Erro ao cadastrar usuário {err}", category="danger")
 
     return render_template('cadastro.html', form=form)
