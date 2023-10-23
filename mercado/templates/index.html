@@ -6,6 +6,23 @@
 
  {% block conteudo %}
 
- <h1 >Home page</h1>
+   <div class="py-5">
+      <header class="h-100 text-white bg-dark  text-center justify-content-center align-items-center">
+
+         <h1 >PureMarket</h1>
+         <p>bem vindo! |para acessar a página de produtos, clique no botão abaixo.  </p>
+         <a class="btn btn-success" type="button" href="{{url_for('page_produtos')}}">Iniciar</a>
     <hr>
-  {% endblock %}
+      </header>
+   </div>
+ 
+ {% endblock %}
+
+
+  <style>
+   h1{
+    text-align: center;
+    
+    color: #f5f5f5;
+  }
+  </style>
