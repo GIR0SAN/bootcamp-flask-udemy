@@ -1,48 +1,45 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block titulo %}
-  Produtos
-  {% endblock %}
+    Produtos
+{% endblock %}
 
-  {% block conteudo %}
-  <div class="row" style="margin-top:24px; margin-left:24px;">
-    <div class="col-8">
-      <h2>Produtos Disponíveis</h2>
-      <p style="text-align: center;">Clique em comprar no item caso tenha interesse</p>
-      <hr>
-      <table class="table  table -dark table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cód Barra</th>
-                <th scope="col">Preço</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-          {% for item in itens %}
-          {% include 'includes/modal_produtos.html' %}
-
-            <tr>
-                <td >{{item.id}}</td>
-                <td >{{item.nome}}</td>
-                <td >{{item.cod_barras}}</td>
-                <td >{{item.preço}}</td>
-                <td>
-                  <button data-bs-toggle="modal" data-bs-target="#exampleModal-{{item.id}}" class="c-info">Mais Informações</button>
-                  <button class="buy">Comprar</button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
+{% block conteudo %}
+    <div class="row" style="margin-top: 20px; margin-left: 20px;">
+        <div class="col-8">
+            <h2 style="text-align: center;">Produtos Disponíveis</h2>
+            <p style="text-align: center;">Clique em comprar o item caso tenha interesse</p>
+                <hr>
+                <table class="table table-hover table-dark table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Cód Barra</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in itens %}
+                        <tr>
+                            <td>{{item.id}}</td>
+                            <td>{{item.nome}}</td>
+                            <td>{{item.cod_barra}}</td>
+                            <td>{{item.preco}}</td>
+                            <td>
+                                <button class="btn btn-outline btn-info">Mais informações</button>
+                                <button class="btn btn-outline btn-success">Comprar esse produto</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+        <div class="col-4">
+            <h2>Produtos Adquiridos</h2>
+            <p>Clique em devolver o item caso tenha interesse</p>
+            <hr>
+        </div>
     </div>
-    <div class="col-4">
-      <h2 style="text-align: center;">Produtos Adquiridos</h2>
-      <p style="text-align: center;">Clique em devolver caso tenha interesse</p>
-      <hr>
-    </div>
-  </div>
-  
-  {% endblock %}
+{% endblock %}
