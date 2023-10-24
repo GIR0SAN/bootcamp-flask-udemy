@@ -22,13 +22,15 @@
         </thead>
         <tbody>
           {% for item in itens %}
+          {% include 'includes/modal_produtos.html' %}
+
             <tr>
                 <td >{{item.id}}</td>
                 <td >{{item.nome}}</td>
                 <td >{{item.cod_barras}}</td>
                 <td >{{item.preço}}</td>
                 <td>
-                  <button class="info">Mais Informações</button>
+                  <button data-bs-toggle="modal" data-bs-target="#exampleModal-{{item.id}}" class="c-info">Mais Informações</button>
                   <button class="buy">Comprar</button>
                 </td>
             </tr>

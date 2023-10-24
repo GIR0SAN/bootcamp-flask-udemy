@@ -63,7 +63,7 @@
   {% with messages = get_flashed_messages ( with_categories=true ) %}
     {% if messages %}
       {% for message in messages %}
-        <div class="alert alert-{{category}} alert-dismissible fade show " role="alert">
+        <div >
           <button type="button" class="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close">
@@ -111,7 +111,6 @@
   }
   h1{
     text-align: center;
-    
     color: #f5f5f5;
   }
   table th, td{
@@ -120,12 +119,12 @@
   tr:hover{
     color: #fcd600e5;
   }
-  .info{
+  .c-info{
     background-color: rgb(107, 159, 255);
     padding: 6px 8px;
     margin-right: 8px;
   }
-  .info:hover{
+  .c-info:hover{
     background-color: blanchedalmond;
     border: 2px solid blue;
   }
@@ -137,18 +136,13 @@
     background-color:antiquewhite;
     padding: 6px 8px;
     border-color: green;
-  }  
-  .alert{
-    width:100%;
-    margin: 60px auto;
-    text-align: center;
-  }
+  } 
   .btn-close{
-    width: 100%;
-    background-color: red;
-    color: #f5f5f5;
     display: flex;
-    justify-content: space-between;   
+    justify-content: end;
+  }
+  .alert{
+    background-color: red;
   }
  </style>
 
