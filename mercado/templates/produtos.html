@@ -5,8 +5,10 @@
   {% endblock %}
 
   {% block conteudo %}
-
-  <h1>Produtos</h1>
+  <div class="row" style="margin-top:24px; margin-left:24px;">
+    <div class="col-8">
+      <h2>Produtos Disponíveis</h2>
+      <p style="text-align: center;">Clique em comprar no item caso tenha interesse</p>
       <hr>
       <table class="table  table -dark table-bordered">
         <thead>
@@ -15,7 +17,6 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Cód Barra</th>
                 <th scope="col">Preço</th>
-                <th scope="col">Descrição</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -26,7 +27,6 @@
                 <td >{{item.nome}}</td>
                 <td >{{item.cod_barras}}</td>
                 <td >{{item.preço}}</td>
-                <td >{{item.descricao}}</td>
                 <td>
                   <button class="info">Mais Informações</button>
                   <button class="buy">Comprar</button>
@@ -35,4 +35,12 @@
             {% endfor %}
         </tbody>
       </table>
+    </div>
+    <div class="col-4">
+      <h2 style="text-align: center;">Produtos Adquiridos</h2>
+      <p style="text-align: center;">Clique em devolver caso tenha interesse</p>
+      <hr>
+    </div>
+  </div>
+  
   {% endblock %}

@@ -59,8 +59,8 @@
       </div>
     </div>
   </nav>
-<!-- O codigo abaixo é para mostrar mensagens de erro ao cadastrar o usuario. Está np html para poder ser usado em mais arquivos. É usado o flash para fazer esse alerta de erro.-->
-  {% with messages = get_flashed_messages(with_categories=true) %}
+<!-- O codigo abaixo é para mostrar mensagens de erro ao cadastrar o usuario. Está no html para poder ser usado em mais arquivos. É usado o flash para fazer esse alerta de erro.-->
+  {% with messages = get_flashed_messages ( with_categories=true ) %}
     {% if messages %}
       {% for message in messages %}
         <div class="alert alert-{{category}} alert-dismissible fade show " role="alert">
