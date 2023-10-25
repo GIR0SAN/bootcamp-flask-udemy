@@ -22,14 +22,16 @@
                     </thead>
                     <tbody>
                         {% for item in itens %}
+                        {% include 'includes/modal_produtos.html' %}
+
                         <tr>
                             <td>{{item.id}}</td>
                             <td>{{item.nome}}</td>
-                            <td>{{item.cod_barra}}</td>
-                            <td>{{item.preco}}</td>
+                            <td>{{item.cod_barras}}</td>
+                            <td>{{item.preço}}</td>
                             <td>
-                                <button class="btn btn-outline btn-info">Mais informações</button>
-                                <button class="btn btn-outline btn-success">Comprar esse produto</button>
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal-{{item.id}}" class="btn btn-outline btn-info">Mais informações</button>
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModalCompra-{{item.id}}" class="btn btn-outline btn-success">Comprar esse produto</button>
                             </td>
                         </tr>
                         {% endfor %}
