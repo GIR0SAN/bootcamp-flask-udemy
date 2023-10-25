@@ -13,7 +13,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          {{item.descricao}}
+          {{ item.descricao }}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -30,8 +30,20 @@
           <h5 class="modal-title" id="exampleModalLabel">{{item.nome}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          Deseja comprar o produto {{item.nome}} por R${{item.preço}}?
+        <div class="modal-body text-center">
+          <form method="POST">
+            {{ compra_form.hidden_tag() }}
+            <br>
+            <h4>
+              Deseja comprar o produto {{item.nome}} por R${{item.preço}}?
+            </h4>
+            <br>
+            <h5>
+              Clique no botão abaixo para comprar o produto
+            </h5>
+            <br>
+            {{ compra_form.submit(class="btn btn-outline-success btn-block text-success bg-light") }}
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -40,3 +52,5 @@
     </div>
   </div>
   
+
+ 

@@ -1,7 +1,7 @@
 from mercado import app
 from flask import render_template, redirect, url_for, flash, session
 from mercado.models import Item, User
-from mercado.forms import CadastroForm, LoginForm
+from mercado.forms import CadastroForm, LoginForm, CompraProdutoForm
 from mercado import db
 from flask_login import login_user, logout_user, login_required
 
@@ -14,8 +14,9 @@ def page_home():
 @app.route('/produtos')
 @login_required
 def page_produtos():
+    compra_form = CompraProdutoForm()
     itens = Item.query.all()
-    return render_template("produtos.html", itens=itens)
+    return render_template("produtos.html", itens=itens, compra_form=compra_form)
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def page_cadastro():
