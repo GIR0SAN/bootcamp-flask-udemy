@@ -45,3 +45,8 @@ class Item(db.Model):
 
     def __repr__(self):
         return f"Item {self.nome}"
+    
+    def compra(self, usuario):
+        self.dono = usuario.id
+        usuario.valor -= self.preço
+        db.session.commit()
