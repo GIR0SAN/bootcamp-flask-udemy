@@ -23,6 +23,7 @@
                     <tbody>
                         {% for item in itens %}
                         {% include 'includes/modal_produtos.html' %}
+                        {% include 'includes/modal_produtos.html' %}
 
                         <tr>
                             <td>{{item.id}}</td>
@@ -44,11 +45,12 @@
             <hr>
             <div class="row">
             {% for dono_item in dono_itens %}
+            {% include 'includes/dono_modal_produtos.html' %}
                 <div class="card-wrapper" style="margin-bottom: 12px;">
                     <div class="card text-center bg-dark" style="width:50%;">
                         <div class="card-body" >
                           <h5 class="card-title">{{ dono_item.nome}}</h5>
-                          <button style="margin: 10px ; padding: 0 8px;" data-bs-toggle="modal"  data-bs-target="#" class="btn btn-outline-danger" type="button">Vender esse produto</button>
+                          <button style="margin: 10px ; padding: 0 8px;" data-bs-toggle="modal"  data-bs-target="#exampleModalVenda-{{ dono_item.id }}" class="btn btn-outline-danger" type="button">Vender esse produto</button>
                           <strong>Esse produto custa R$ {{ dono_item.preço }}</strong>
                         </div>
                     </div>
