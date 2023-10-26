@@ -5,8 +5,6 @@ from mercado.forms import CadastroForm, LoginForm, CompraProdutoForm, VendaProdu
 from mercado import db
 from flask_login import login_user, logout_user, login_required, current_user
 
-
-
 @app.route('/')
 def page_home():
     return render_template("index.html")
@@ -17,6 +15,7 @@ def page_produtos():
     compra_form = CompraProdutoForm()
     venda_form = VendaProdutoForm()
     if request.method == 'POST':
+        # Compra do produto
         compra_produto = request.form.get('compra_produto')
         produto_obj = Item.query.filter_by(nome=compra_produto).first()
         if produto_obj:
@@ -25,6 +24,16 @@ def page_produtos():
                 flash(f"Parabéns! Você comprou o produto {produto_obj.nome}", category="success")
             else:
                 flash(f"Você não possui saldo suficiente para comprar o produto {produto_obj.nome}", category="danger")
+        # Venda do produto
+        venda_produto = request.form.get('venda_produto')
+        produto_obj_venda = Item.query.filter_by(nome=venda_produto).first()
+        if produto_obj_venda:
+            if current_user.venda_disponivel(produto_obj_venda):
+                produto_obj_venda.venda(current_user)
+                flash(f"Parabéns! Você vendeu o produto {produto_obj_venda.nome}", category="success")
+            else:
+                flash(f"Algo deu errado na hora de vender o produto  {produto_obj_venda.nome}", category="danger")
+
         return redirect(url_for('page_produtos'))
     if request.method == "GET":
         itens = Item.query.filter_by(dono=None)
