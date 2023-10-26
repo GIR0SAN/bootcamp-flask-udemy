@@ -19,14 +19,18 @@ def page_produtos():
         compra_produto = request.form.get('compra_produto')
         produto_obj = Item.query.filter_by(nome=compra_produto).first()
         if produto_obj:
-            produto_obj.dono = current_user.id
-            current_user.valor -= produto_obj.preço
-            db.session.commit()
-            flash(f"Parabéns! Você comprou o produto {produto_obj.nome}", category="success")
+            if current_user.compra_disponivel(produto_obj):
+                produto_obj.dono = current_user.id
+                current_user.valor -= produto_obj.preço
+                db.session.commit()
+                flash(f"Parabéns! Você comprou o produto {produto_obj.nome}", category="success")
+            else:
+                flash(f"Você não possui saldo suficiente para comprar o produto {produto_obj.nome}", category="danger")
         return redirect(url_for('page_produtos'))
-    itens = Item.query.all()
-    return render_template("produtos.html", itens=itens, compra_form=compra_form)
-
+    if request.method == "GET":
+        itens = Item.query.filter_by(dono=None)
+        return render_template("produtos.html", itens=itens, compra_form=compra_form)
+    
 @app.route('/cadastro', methods=['GET', 'POST'])
 def page_cadastro():
     form = CadastroForm()
