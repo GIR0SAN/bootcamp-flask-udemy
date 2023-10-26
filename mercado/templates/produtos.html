@@ -42,6 +42,19 @@
             <h2>Produtos Adquiridos</h2>
             <p>Clique em devolver o item caso tenha interesse</p>
             <hr>
+            <div class="row">
+            {% for dono_item in dono_itens %}
+                <div class="card-wrapper" style="margin-bottom: 12px;">
+                    <div class="card text-center bg-dark" style="width:50%;">
+                        <div class="card-body" >
+                          <h5 class="card-title">{{ dono_item.nome}}</h5>
+                          <button style="margin: 10px ; padding: 0 8px;" data-bs-toggle="modal"  data-bs-target="#" class="btn btn-outline-danger" type="button">Vender esse produto</button>
+                          <strong>Esse produto custa R$ {{ dono_item.preço }}</strong>
+                        </div>
+                    </div>
+                </div>
+            {% endfor%}
+            </div>
         </div>
     </div>
 {% endblock %}
