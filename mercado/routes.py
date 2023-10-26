@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, flash, request
 from mercado.models import Item, User
 from mercado.forms import CadastroForm, LoginForm, CompraProdutoForm
 from mercado import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 
@@ -15,8 +15,15 @@ def page_home():
 @login_required
 def page_produtos():
     compra_form = CompraProdutoForm()
-    if compra_form.validate_on_submit():
-        print(request.form.get('compra_produto'))
+    if request.method == 'POST':
+        compra_produto = request.form.get('compra_produto')
+        produto_obj = Item.query.filter_by(nome=compra_produto).first()
+        if produto_obj:
+            produto_obj.dono = current_user.id
+            current_user.valor -= produto_obj.preço
+            db.session.commit()
+            flash(f"Parabéns! Você comprou o produto {produto_obj.nome}", category="success")
+        return redirect(url_for('page_produtos'))
     itens = Item.query.all()
     return render_template("produtos.html", itens=itens, compra_form=compra_form)
 
